@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -22,6 +23,9 @@ public class UxAnalyticsComposer : IComposer
         builder.Services.AddScoped<IAnalysisService, ClaudeAnalysisService>();
 
         builder.Services.AddHttpClient("ClaudeApi");
+
+        // Auto-register middleware - no manual Program.cs changes needed
+        builder.Services.AddTransient<IStartupFilter, UxInsightStartupFilter>();
 
         builder.AddNotificationHandler<UmbracoApplicationStartedNotification, UxAnalyticsDbInitializer>();
     }

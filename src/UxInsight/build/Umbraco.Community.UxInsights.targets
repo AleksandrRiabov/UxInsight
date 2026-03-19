@@ -1,0 +1,20 @@
+<Project>
+  <Target Name="CopyUxInsightStaticFiles" AfterTargets="Build">
+    <PropertyGroup>
+      <UxInsightPkgDir>$(MSBuildThisFileDirectory)..\staticfiles\</UxInsightPkgDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <UxInsightWwwrootFiles Include="$(UxInsightPkgDir)wwwroot\ux-analytics\**\*" />
+      <UxInsightAppPluginFiles Include="$(UxInsightPkgDir)App_Plugins\ux-analytics\**\*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(UxInsightWwwrootFiles)"
+          DestinationFiles="@(UxInsightWwwrootFiles->'$(MSBuildProjectDirectory)\wwwroot\ux-analytics\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+
+    <Copy SourceFiles="@(UxInsightAppPluginFiles)"
+          DestinationFiles="@(UxInsightAppPluginFiles->'$(MSBuildProjectDirectory)\App_Plugins\ux-analytics\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

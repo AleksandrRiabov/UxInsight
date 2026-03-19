@@ -8,13 +8,19 @@
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 
     <!-- NuGet metadata -->
-    <PackageId>UxInsight</PackageId>
+    <PackageId>Umbraco.Community.UxInsights</PackageId>
     <Version>0.1.0</Version>
-    <Authors>Bristol Digital</Authors>
-    <Description>AI-powered UX analytics dashboard for Umbraco v17. Tracks user behavior on frontend pages and uses Claude AI to analyze conversion bottlenecks, UX issues, and user engagement patterns.</Description>
-    <PackageTags>umbraco;analytics;ux;tracking;claude;ai;heatmap;conversion</PackageTags>
+    <Authors>Aleksandr Riabov</Authors>
+    <Company>Aleksandr Riabov</Company>
+    <Copyright>Copyright (c) 2026 Aleksandr Riabov</Copyright>
+    <Description>AI-powered UX analytics dashboard for Umbraco v17. Automatically tracks user behavior (clicks, scroll depth, time on page, form interactions, navigation paths, mouse heatmap) and uses Claude AI to analyze conversion bottlenecks, UX issues, and engagement patterns. Zero-config middleware - just install and add your API key.</Description>
+    <PackageTags>umbraco;umbraco-package;analytics;ux;user-experience;tracking;claude;ai;heatmap;conversion;behavior;dashboard</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/AleksandrRiabov/UxInsight</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AleksandrRiabov/UxInsight</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Initial release - proof of concept.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +30,13 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- NuGet package content: targets + static files -->
+  <ItemGroup>
+    <None Include="build\Umbraco.Community.UxInsights.targets" Pack="true" PackagePath="build\" />
+    <None Include="wwwroot\ux-analytics\**\*" Pack="true" PackagePath="staticfiles\wwwroot\ux-analytics\" />
+    <None Include="wwwroot\App_Plugins\ux-analytics\**\*" Pack="true" PackagePath="staticfiles\App_Plugins\ux-analytics\" />
   </ItemGroup>
 
 </Project>
